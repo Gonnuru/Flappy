@@ -14,15 +14,17 @@ import java.util.Random;
 
 public class bird extends ApplicationAdapter {
     SpriteBatch batch;
-    Texture background;
-    Texture gameOver;
-
-
-    Texture[] birds;
-    int flapState = 0;
+    /* texture files are used form creating 
+    a texture overlapping one another */
+    
+    Texture background; //background texture for the scenary
+    Texture gameOver;   
+    Texture[] birds;    //texture for flappy bird
+    
+    int flapState = 0;  
     float birdY = 0;
     float velocity = 0;
-    Circle birdCircle;
+    Circle birdCircle;  
     int score = 0;
     int scoringTube=0;
     BitmapFont font;
@@ -74,11 +76,13 @@ public class bird extends ApplicationAdapter {
     }
 
     public void startGame(){
+        
+        //birdY is for centering the bird on the screen
         birdY = Gdx.graphics.getHeight() / 2 - birds[0].getHeight() / 2;
 
         for(int i=0;i<numberOfTubes;i++){
 
-
+               //for setting the tube to the center of the screen and generated randomly on each tap of the bird
             tubeOffset[i] = (randomGenerator.nextFloat() - 0.5f)*(Gdx.graphics.getHeight()-  gap - 200);
             tubeX[i] = Gdx.graphics.getWidth()/2-topTube.getWidth()/2 + Gdx.graphics.getWidth() + i*distanceBetweenTubes ;
 
